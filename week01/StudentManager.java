@@ -22,22 +22,49 @@ public class StudentManager {
            }
 
        }
-
-
        System.out.println("没找到");
+       }
+       public Student findById(String id){
+           for (int i = 0; i <count ; i++) {
+               if (students[i].getId().equals(id)){
+                return students[i];
+               }
+           }
+           return null;
+       }
+       public void update(String id,double newScore){
+           Student s = findById(id);
+           if (s==null){
+               System.out.println("没找到："+id);
+               return;
+           }
+           s.setScore(newScore);
+
+       }
+       public void printAll(){
+           for (int i = 0; i < count; i++) {
+               System.out.println(students[i]);
+           }
        }
 
     public static void main(String[] args) {
         StudentManager manager = new StudentManager();
 
-        manager.add(new Student("001","张三",19,95));
-        manager.add(new Student("002","李四",20,55));
-        manager.add(new Student("003","王五",21,88));
-        System.out.println(manager.size());
-        System.out.println("====================");
-        manager.remove("002");
-        System.out.println(manager.size());
+       manager.add(new Student("001","张三",19,95));
+       manager.add(new Student("002","李四",20,55));
+       manager.add(new Student("003","王五",21,88));
+        manager.printAll();
+        System.out.println("人数："+manager.size());
+
+        System.out.println("===查 002===");
+        System.out.println(manager.findById("002"));
+
+        manager.update("002",100);
+
         manager.remove("001");
-        System.out.println(manager.size());
+        manager.printAll();
+        System.out.println("删除后人数："+manager.size());
+
+
     }
 }

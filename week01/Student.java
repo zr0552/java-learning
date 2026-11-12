@@ -51,6 +51,16 @@ public class Student {
 
     }
 
+    @Override
+    public String toString() {
+        return "Student{" +
+                "id='" + id + '\'' +
+                ", name='" + name + '\'' +
+                ", age=" + age +
+                ", score=" + score +
+                '}';
+    }
+
     public static void main(String[] args) {
         Student student = new Student("20070812","小王",19,99);
         Student student1 = new Student("20070812","小王",19,50);
